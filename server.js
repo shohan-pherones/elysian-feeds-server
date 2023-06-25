@@ -8,6 +8,7 @@ const userRoutes = require("./routes/user.route");
 const reviewRoutes = require("./routes/review.route");
 const providerRoutes = require("./routes/provider.route");
 const consumerRoutes = require("./routes/consumer.route");
+const checkpostRoutes = require("./routes/checkpost.route");
 
 /* EXPRESS APP */
 const app = express();
@@ -30,6 +31,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/providers", providerRoutes);
 app.use("/api/consumers", consumerRoutes);
+app.use("/api/checkpost", checkpostRoutes);
 
 /* VARIABLES */
 const port = process.env.PORT || 8080;
