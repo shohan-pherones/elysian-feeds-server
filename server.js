@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.route");
 const reviewRoutes = require("./routes/review.route");
+const providerRoutes = require("./routes/provider.route");
 
 /* EXPRESS APP */
 const app = express();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 /* BYPASSED APIs */
 app.use("/api/users", userRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/providers", providerRoutes);
 
 /* VARIABLES */
 const port = process.env.PORT || 8080;
