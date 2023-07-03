@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const mongoose = require("mongoose");
 const { createToken } = require("../helpers/token.helper");
 
 const loginUser = async (req, res) => {
