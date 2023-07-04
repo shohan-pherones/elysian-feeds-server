@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.post("/", isAuthenticated, isConsumerConnector, createConsumer);
 router.get("/", isAuthenticated, isConsumerConnector, getAllConsumers);
-router.get("/:pid", isAuthenticated, isConsumerConnector, getAConsumer);
-router.post("/:pid", isAuthenticated, isConsumerConnector, createConsumption);
+router.get("/:cid", isAuthenticated, isConsumerConnector, getAConsumer);
+router.post("/:cid", isAuthenticated, isConsumerConnector, createConsumption);
 
 module.exports = router;
