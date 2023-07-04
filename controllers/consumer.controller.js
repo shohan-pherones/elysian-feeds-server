@@ -1,7 +1,7 @@
+const mongoose = require("mongoose");
 const Consumer = require("../models/consumer.model");
 const Consumption = require("../models/consumption.model");
 const User = require("../models/user.model");
-const mongoose = require("mongoose");
 
 const createConsumer = async (req, res) => {
   try {

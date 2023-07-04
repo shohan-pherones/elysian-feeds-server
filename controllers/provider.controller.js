@@ -1,7 +1,7 @@
+const mongoose = require("mongoose");
 const Provider = require("../models/provider.model");
 const Contribution = require("../models/contribution.model");
 const User = require("../models/user.model");
-const mongoose = require("mongoose");
 
 const createProvider = async (req, res) => {
   try {
