@@ -1,10 +1,105 @@
-const createProvider = async (req, res) => {};
+const Provider = require("../models/provider.model");
+const Contribution = require("../models/contribution.model");
+const User = require("../models/user.model");
+const mongoose = require("mongoose");
 
-const getAllProviders = async (req, res) => {};
+const createProvider = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { name, image, address } = req.body;
 
-const getAProvider = async (req, res) => {};
+    const provider = await Provider.create({ name, image, address, user: _id });
 
-const createContribution = async (req, res) => {};
+    await User.findByIdAndUpdate(_id, {
+      $push: {
+        providers: provider._id,
+      },
+    });
+
+    res.status(200).json(provider);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const getAllProviders = async (req, res) => {
+  try {
+    const { _id } = req.user;
+
+    const providers = await Provider.find({ user: _id })
+      .populate("contributions")
+      .exec();
+
+    res.status(200).json(providers);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const getAProvider = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    const { _id } = req.user;
+
+    if (!mongoose.Types.ObjectId.isValid(pid)) {
+      throw new Error("Provider not found.");
+    }
+
+    const provider = await Provider.findOne({ _id: pid })
+      .populate("contributions")
+      .exec();
+
+    if (!provider) {
+      throw new Error("Provider not found.");
+    }
+
+    if (provider.user.toString() !== _id.toString()) {
+      throw new Error("Unauthorized access.");
+    }
+
+    res.status(200).json(provider);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const createContribution = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    const { _id } = req.user;
+    const { name, amount } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(pid)) {
+      throw new Error("Provider not found.");
+    }
+
+    const provider = await Provider.findOne({ _id: pid });
+
+    if (!provider) {
+      throw new Error("Provider not found.");
+    }
+
+    if (provider.user.toString() !== _id.toString()) {
+      throw new Error("Unauthorized access.");
+    }
+
+    const contribution = await Contribution.create({
+      provider: pid,
+      name,
+      amount,
+    });
+
+    await Provider.findByIdAndUpdate(pid, {
+      $push: {
+        contributions: contribution._id,
+      },
+    });
+
+    res.status(200).json(contribution);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 module.exports = {
   createProvider,
