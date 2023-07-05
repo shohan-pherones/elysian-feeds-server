@@ -8,6 +8,9 @@
     "start": "node",
     "dev": "nodemon"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
