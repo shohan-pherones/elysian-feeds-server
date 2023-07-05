@@ -104,9 +104,20 @@ const createConsumption = async (req, res) => {
   }
 };
 
+const getPublicConsumers = async (req, res) => {
+  try {
+    const consumers = await Consumer.find({}).populate("consumptions").exec();
+
+    res.status(200).json(consumers);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createConsumer,
   getAllConsumers,
   getAConsumer,
   createConsumption,
+  getPublicConsumers,
 };

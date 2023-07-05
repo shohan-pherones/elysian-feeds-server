@@ -6,10 +6,12 @@ const {
   getAllProviders,
   getAProvider,
   createContribution,
+  getPublicProviders,
 } = require("../controllers/provider.controller");
 
 const router = express.Router();
 
+router.get("/all", getPublicProviders);
 router.post("/", isAuthenticated, isProviderConnector, createProvider);
 router.get("/", isAuthenticated, isProviderConnector, getAllProviders);
 router.get("/:pid", isAuthenticated, isProviderConnector, getAProvider);

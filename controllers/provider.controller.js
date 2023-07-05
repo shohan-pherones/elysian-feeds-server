@@ -101,9 +101,20 @@ const createContribution = async (req, res) => {
   }
 };
 
+const getPublicProviders = async (req, res) => {
+  try {
+    const providers = await Provider.find({}).populate("contributions").exec();
+
+    res.status(200).json(providers);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createProvider,
   getAllProviders,
   getAProvider,
   createContribution,
+  getPublicProviders,
 };
