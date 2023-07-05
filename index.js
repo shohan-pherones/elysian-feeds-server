@@ -15,11 +15,13 @@ const app = express();
 
 /* MIDDLEWARES */
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-  })
-);
+const corsConfig = {
+  origin: "",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+};
+app.use(cors(corsConfig));
+app.options("", cors(corsConfig));
 
 /* TEST API */
 app.get("/", (req, res) => {
