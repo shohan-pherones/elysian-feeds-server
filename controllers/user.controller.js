@@ -78,7 +78,7 @@ const updateUserRole = async (req, res) => {
 
     const updatedUser = await User.findByIdAndUpdate(
       uid,
-      { $set: { role } },
+      { $set: { role, checkpost: "" } },
       { new: true }
     );
 
