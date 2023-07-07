@@ -121,9 +121,7 @@ userSchema.statics.signup = async function (
     address,
     occupation,
     phoneNumber,
-  })
-    .populate("checkpost")
-    .exec();
+  });
 
   return user;
 };
