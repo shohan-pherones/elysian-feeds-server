@@ -121,7 +121,9 @@ userSchema.statics.signup = async function (
     address,
     occupation,
     phoneNumber,
-  });
+  })
+    .populate("checkpost")
+    .exec();
 
   return user;
 };
@@ -133,7 +135,7 @@ userSchema.statics.login = async function (email, password) {
   }
 
   //check if the user exists or not
-  const user = await this.findOne({ email });
+  const user = await this.findOne({ email }).populate("checkpost").exec();
 
   if (!user) {
     throw new Error("Incorrect email");
