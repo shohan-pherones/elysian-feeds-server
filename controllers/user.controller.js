@@ -61,7 +61,7 @@ const getAnUser = async (req, res) => {
       throw new Error("Unauthorized access.");
     }
 
-    const user = await User.findById(uid);
+    const user = await User.findById(uid).populate("checkpost").exec();
     res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });
