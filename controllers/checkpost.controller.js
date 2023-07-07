@@ -22,7 +22,10 @@ const createJoiningReq = async (req, res) => {
 
 const getAllReqs = async (req, res) => {
   try {
-    const reqs = await Checkpost.find({}).populate("user").exec();
+    const reqs = await Checkpost.find({})
+      .sort({ createdAt: -1 })
+      .populate("user")
+      .exec();
 
     if (!reqs) {
       throw new Error("No request found.");
