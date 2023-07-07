@@ -10,6 +10,11 @@ const checkpostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      enum: ["pending", "approved", "denied"],
+      default: "pending",
+      required: true,
+    },
   },
   {
     timestamps: true,
