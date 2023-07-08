@@ -27,6 +27,7 @@ const getAllProviders = async (req, res) => {
     const { _id } = req.user;
 
     const providers = await Provider.find({ user: _id })
+      .sort({ createdAt: -1 })
       .populate("contributions")
       .exec();
 
