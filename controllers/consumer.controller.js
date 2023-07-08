@@ -106,7 +106,11 @@ const createConsumption = async (req, res) => {
 
 const getPublicConsumers = async (req, res) => {
   try {
-    const consumers = await Consumer.find({}).populate("consumptions").exec();
+    const consumers = await Consumer.find({})
+      .sort({ createdAt: -1 })
+      .populate("consumptions")
+      .populate("user")
+      .exec();
 
     res.status(200).json(consumers);
   } catch (error) {

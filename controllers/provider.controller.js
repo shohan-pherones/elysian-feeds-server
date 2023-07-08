@@ -105,7 +105,8 @@ const getPublicProviders = async (req, res) => {
   try {
     const providers = await Provider.find({})
       .sort({ createdAt: -1 })
-      .populate("contributions", "user")
+      .populate("contributions")
+      .populate("user")
       .exec();
 
     res.status(200).json(providers);
