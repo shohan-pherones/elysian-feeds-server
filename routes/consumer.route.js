@@ -7,11 +7,13 @@ const {
   getAConsumer,
   createConsumption,
   getPublicConsumers,
+  getAPublicConsumer,
 } = require("../controllers/consumer.controller");
 
 const router = express.Router();
 
 router.get("/all", getPublicConsumers);
+router.get("/all/:cid", getAPublicConsumer);
 router.post("/", isAuthenticated, isConsumerConnector, createConsumer);
 router.get("/", isAuthenticated, isConsumerConnector, getAllConsumers);
 router.get("/:cid", isAuthenticated, isConsumerConnector, getAConsumer);

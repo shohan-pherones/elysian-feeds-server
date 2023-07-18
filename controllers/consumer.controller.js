@@ -118,10 +118,30 @@ const getPublicConsumers = async (req, res) => {
   }
 };
 
+const getAPublicConsumer = async (req, res) => {
+  try {
+    const { cid } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(cid)) {
+      throw new Error("Consumer not found.");
+    }
+
+    const consumer = await Consumer.findById(cid)
+      .populate("consumptions")
+      .populate("user")
+      .exec();
+
+    res.status(200).json(consumer);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createConsumer,
   getAllConsumers,
   getAConsumer,
   createConsumption,
   getPublicConsumers,
+  getAPublicConsumer,
 };
