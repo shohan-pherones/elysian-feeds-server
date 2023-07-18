@@ -116,10 +116,30 @@ const getPublicProviders = async (req, res) => {
   }
 };
 
+const getAPublicProvider = async (req, res) => {
+  try {
+    const { pid } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(pid)) {
+      throw new Error("Provider not found.");
+    }
+
+    const provider = await Provider.findById(pid)
+      .populate("contributions")
+      .populate("user")
+      .exec();
+
+    res.status(200).json(provider);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createProvider,
   getAllProviders,
   getAProvider,
   createContribution,
   getPublicProviders,
+  getAPublicProvider,
 };
