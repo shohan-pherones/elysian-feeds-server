@@ -35,6 +35,10 @@ To install Elysian Feeds Server, follow these simple steps:
    - `JWT_SECRET`
 4. Start the application by running `npm run dev`.
 
+or
+
+if you have docker installed on your machine you can just hit `docker pull spectrashohan/elysian` to pull, to see the version tags visit [Docker Hub - spectrashohan/elysian](https://hub.docker.com/r/spectrashohan/elysian)
+
 ## Contribution
 
 At Elysian Feeds, we welcome contributions from the open-source community to help improve and enhance our platform. Here are a few ways you can contribute:
