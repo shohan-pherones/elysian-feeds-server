@@ -35,7 +35,7 @@ To install Elysian Feeds Server, follow these simple steps:
    - `JWT_SECRET`
 4. Start the application by running `npm run dev`.
 
-Or if you have Docker and Docker Compose installed on your machine, you can simply execute `docker-compose build` and `docker-compose up` to start the app.
+If you have Docker and Docker Compose installed on your machine, you can simply execute `docker-compose build` and `docker-compose up` to start the app. Additionally, to access the Docker image, you can visit [https://hub.docker.com/r/spectrashohan/elysian](https://hub.docker.com/r/spectrashohan/elysian).
 
 ## Contribution
 
