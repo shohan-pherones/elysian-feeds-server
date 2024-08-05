@@ -4,11 +4,9 @@ Elysian Feeds is a charitable initiative website that empowers users to contribu
 
 ## Features
 
-Elysian Feeds comes packed with a variety of useful features, including:
-
 - **Contribution and Consumption:** Users can actively participate by contributing resources or consuming them from the platform, creating a cycle of giving and receiving.
 
-- **User Role Management:** UThe admin has the authority to manage user roles, ensuring efficient operations and maintaining the integrity of the platform.
+- **User Role Management:** The admin has the authority to manage user roles, ensuring efficient operations and maintaining the integrity of the platform.
 
 - **Contribution and Consumption Tracking:** The admin can analyze and track contributions and consumption patterns, allowing for effective monitoring of the platform's impact and performance.
 
@@ -24,31 +22,40 @@ Elysian Feeds comes packed with a variety of useful features, including:
 
 - **Sustainable Solution:** The platform aims to address various societal needs in a sustainable manner, creating a more equitable and compassionate future for communities worldwide.
 
-## Installation
+## Run Locally
 
-To install Elysian Feeds Server, follow these simple steps:
+Clone the project
 
-1. Clone the repository using `git clone https://github.com/shohan-pherones/elysian-feeds-server.git`
-2. Install the required dependencies by running `npm install` or `npm i`.
-3. Create a `.env` file in the root directory and add the following variables:
-   - `MONGO_URI`
-   - `JWT_SECRET`
-4. Start the application by running `npm run dev`.
+```bash
+  git clone https://github.com/shohan-pherones/elysian-feeds-server.git
+```
 
-If you have Docker and Docker Compose installed on your machine, you can simply execute `docker-compose build` and `docker-compose up` to start the app. Additionally, to access the Docker image, you can visit [https://hub.docker.com/r/spectrashohan/elysian](https://hub.docker.com/r/spectrashohan/elysian).
+Go to the project directory
 
-## Contribution
+```bash
+  cd elysian-feeds-server
+```
 
-At Elysian Feeds, we welcome contributions from the open-source community to help improve and enhance our platform. Here are a few ways you can contribute:
+Install dependencies
 
-- **Bug Reports:** If you come across any issues or bugs while using our platform, please report them using our issue tracker on GitHub. This will help us identify and fix the issues quickly.
+```bash
+  npm install
+```
 
-- **Feature Requests:** If you have ideas for new features or improvements that could enhance our platform, please submit them through our issue tracker. We welcome all feedback and suggestions!
+Start the server
 
-- **Pull Requests:** If you're interested in contributing code to our platform, you can submit pull requests on GitHub. We ask that you follow our coding conventions and submit tests with your code changes.
+```bash
+  npm run dev
+```
 
-- **Documentation:** We welcome contributions to our documentation, including updating existing documentation or adding new documentation as needed.
+## Environment Variables
 
-- **Spread the Word:** If you enjoy using our platform, please help spread the word by sharing it on social media or with your network. This will help us reach more users and grow our community.
+To run this project, you will need to add the following environment variables to your .env file
 
-We appreciate all contributions and look forward to collaborating with the open-source community to make Elysian Feeds the best it can be!
+`MONGO_URI`
+
+`JWT_SECRET`
+
+## Feedback
+
+If you have any feedback, please reach out to me at shohan.sub.56@gmail.com
